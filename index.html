@@ -17,6 +17,24 @@
 
     gtag('js', new Date());
     gtag('config', 'AW-18496565583');
+
+    // Google Ads Event Snippet for Click / Contact Conversion
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) !== 'undefined' && url) {
+          window.location = url;
+        }
+      };
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18496565583',
+          'event_callback': callback
+        });
+      } else if (typeof(url) !== 'undefined' && url) {
+        window.location = url;
+      }
+      return false;
+    }
   </script>
 
   <meta charset="UTF-8" />

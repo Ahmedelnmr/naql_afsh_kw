@@ -71,7 +71,9 @@
   /* ---------- Google Ads Conversion Event Tracking ---------- */
   document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
     link.addEventListener('click', function () {
-      if (typeof window.gtag === 'function') {
+      if (typeof window.gtag_report_conversion === 'function') {
+        window.gtag_report_conversion();
+      } else if (typeof window.gtag === 'function') {
         window.gtag('event', 'conversion', {
           'send_to': 'AW-18496565583',
           'event_category': 'Phone Call',
@@ -83,7 +85,9 @@
 
   document.querySelectorAll('a[href*="wa.me"]').forEach(function (link) {
     link.addEventListener('click', function () {
-      if (typeof window.gtag === 'function') {
+      if (typeof window.gtag_report_conversion === 'function') {
+        window.gtag_report_conversion();
+      } else if (typeof window.gtag === 'function') {
         window.gtag('event', 'conversion', {
           'send_to': 'AW-18496565583',
           'event_category': 'WhatsApp',
